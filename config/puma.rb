@@ -32,7 +32,9 @@ threads threads_count, threads_count
 port ENV.fetch("PORT", 3000)
 
 # Allow puma to be restarted by `bin/rails restart` command.
-plugin :tmp_restart
+# Disabled on Windows: tmp_restart uses file-mtime polling that triggers false
+# restarts due to Windows filesystem timestamp behavior.
+# plugin :tmp_restart
 
 # Run the Solid Queue supervisor inside of Puma for single-server deployments.
 plugin :solid_queue if ENV["SOLID_QUEUE_IN_PUMA"]
