@@ -1,0 +1,46 @@
+<h1> Filmes cadastrados </h1>
+
+<h1> Todos os Filmes </h1>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Título</th>
+      <th>Classificação</th>
+      <th>Lançamento</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @movies.each do |movie| %>
+    <tr>
+      <td>
+        <%= movie.title %>
+      </td>
+      <td>
+        <%= movie.rating %>
+      </td>
+      <td>
+        <%= movie. %>
+      </td>
+      <td>
+        <%= movie. %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<% @movies.each do |movie| %>
+  <div>
+    <strong>
+      <%= movie.title %>
+      <%= movie.rating %>
+      <%= movie.release_date %>
+    </strong>
+  </div>
+  <%= link_to "Editar", edit_movie_path(movie) %>
+  <%= link_to "Deletar", movie, method: :delete %>
+<% end %>
+
+<%= link_to "Novo Filme", new_movie_path %>
