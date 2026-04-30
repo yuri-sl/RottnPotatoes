@@ -2,6 +2,6 @@
 
 <p><strong>Título: </strong><%= @movie.title %></p>
 <p><strong>Classificação: </strong><%= @movie.rating %></p>
-<p><strong>Data de Lançamento: </strong><%= @movie.release_date %></p>
+<p><strong>Data de Lançamento:</strong> <%= @movie.release_date.strftime("%d/%m/%Y") %></p>
 
 <%= link_to "Voltar", movies_path %>
