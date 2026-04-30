@@ -94,4 +94,6 @@ http://127.0.0.1:3000
 
 ## Autor
 - Yuri-sl
+
+
 Desenvolvido como projeto de estudo de Ruby on Rails.
