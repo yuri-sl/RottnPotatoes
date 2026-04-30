@@ -1,39 +1,39 @@
-<h1> Rotten Potatoes </h1>
+<h1>Rotten Potatoes</h1>
+<h1>Todos os Filmes</h1>
 
-<h1> Todos os Filmes </h1>
-
+<%
+  def sort_link(label, column, current_sort, current_order, id)
+    next_order = (current_sort == column && current_order == 'asc') ? 'desc' : 'asc'
+    icon = current_sort == column ? (current_order == 'asc' ? ' ▲' : ' ▼') : ''
+    link_to label + icon, movies_path(sort_by: column, sort_order: next_order), id: id
+  end
+%>
 
 <table>
   <thead>
-    <tr>
-      <th class="<%= 'sorted' if params[:sort_by] == 'title' %>">
-        <%= link_to "Título", movies_path(sort_by: 'title'), id: :title_header %>
-      </th>
-      <th>Classificação</th>
-      <th class="<%= 'sorted'  if params[:sort_by] == 'release_date' %>">
-        <%= link_to "Lançamento", movies_path(sort_by: 'release_date'), id: :release_date_header %>
-      </th>
-      <th>Ações</th>
-    </tr>
+  <tr>
+    <th class="<%= 'sorted' if @sort_by == 'title' %>">
+      <%= sort_link("Título", "title", @sort_by, @sort_order, :title_header) %>
+    </th>
+    <th>Classificação</th>
+    <th class="<%= 'sorted' if @sort_by == 'release_date' %>">
+      <%= sort_link("Lançamento", "release_date", @sort_by, @sort_order, :release_date_header) %>
+    </th>
+    <th>Ações</th>
+  </tr>
   </thead>
   <tbody>
   <% @movies.each do |movie| %>
     <tr>
+      <td><%= link_to movie.title, movie_path(movie) %></td>
+      <td><%= movie.rating %></td>
+      <td><%= movie.release_date.strftime("%d/%m/%Y") %></td>
       <td>
-        <%=  link_to movie.title, movie_path(movie) %>
-      </td>
-      <td>
-        <%= movie.rating %>
-      </td>
-      <td>
-        <%= movie.release_date %>
-      </td>
-      <td>
-        <%= link_to "Editar",edit_movie_path(movie) %>
+        <%= link_to "Editar", edit_movie_path(movie) %>
         <%= button_to "Deletar", movie_path(movie), method: :delete %>
       </td>
     </tr>
-    <%end %>
+  <% end %>
   </tbody>
 </table>
 

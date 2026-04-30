@@ -3,13 +3,17 @@ class MoviesController < ApplicationController
 
   # GET /movies
   def index
-    if params[:sort_by] == 'title'
-      @movies = Movie.order(:title)
-    elsif params[:sort_by] == 'release_date'
-      @movies = Movie.order(:release_date)
+    sort_by = params[:sort_by]
+    sort_order = params[:sort_order] == 'desc' ? 'desc' : 'asc'
+
+    if sort_by.in?(['title', 'release_date'])
+      @movies = Movie.order("LOWER(#{sort_by}) #{sort_order}")
     else
       @movies = Movie.all
     end
+
+    @sort_by = sort_by
+    @sort_order = sort_order
   end
 
   # GET /movies/1
