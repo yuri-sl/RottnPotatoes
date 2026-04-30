@@ -3,6 +3,43 @@
     margin: 0;
     padding: 0;
 }
+header {
+    background: #111;
+    border-bottom: 2px solid #e8390e;
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-content {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.header-logo {
+    font-size: 1.5rem;
+}
+
+.header-title {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #e8390e;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.notice {
+    text-align: center;
+    background: #2e2e2e;
+    color: #e8390e;
+    padding: 0.7rem;
+    margin: 0;
+    border-left: 3px solid #e8390e;
+}
 
 body {
     font-family: Arial, sans-serif;
@@ -21,7 +58,7 @@ h1 {
     color: #e8390e;
     text-transform: uppercase;
     letter-spacing: 2px;
-    font-weight: 500;
+    font-weight: bold;
     padding: 1.5rem 0 0.3rem;
 }
 
@@ -162,4 +199,58 @@ select {
 .page-actions {
     text-align: center;
     margin-top: 1.5rem;
+}
+
+.btn-action {
+    display: block;
+    width: fit-content;
+    margin: 1rem 0 0 auto;
+    padding: 8px 20px;
+    border: 1.5px solid #e8390e;
+    border-radius: 4px;
+    color: #e8390e;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.btn-new:hover,
+.btn-new:visited:hover {
+    background: #e8390e;
+    color: #fff !important;
+}
+
+
+
+.movie-card {
+    background: #242424;
+    border-radius: 8px;
+    padding: 2rem;
+    margin: 2rem auto;
+    max-width: 500px;
+}
+
+.movie-card p {
+    text-align: left;
+    padding: 0.5rem 0;
+    border-bottom: 0.5px solid #333;
+    color: #ddd;
+}
+
+.movie-card p:last-child {
+    border-bottom: none;
+}
+
+.card-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.btn-new.voltar {
+    background: transparent;
+    border-color: #555;
+    color: #aaa;
 }

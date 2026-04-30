@@ -17,8 +17,8 @@
     <%= f.select :rating, ["G", "PG", "PG-13", "R", "NC-17"] %>
   </div>
 
-  <%= f.submit "Salvar alterações" %>
-
+  <%= f.submit "Salvar alterações", class: "btn-action" %>
 <% end %>
-
-<%= link_to "Voltar", movies_path %>
+<div class="btn-action">
+  <%= link_to "Voltar", movies_path %>
+</div>

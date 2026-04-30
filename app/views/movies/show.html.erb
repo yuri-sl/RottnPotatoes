@@ -1,7 +1,12 @@
-<h1> Visualizar Filme </h1>
+<h2>Visualizar Filme</h2>
 
-<p><strong>Título: </strong><%= @movie.title %></p>
-<p><strong>Classificação: </strong><%= @movie.rating %></p>
-<p><strong>Data de Lançamento:</strong> <%= @movie.release_date.strftime("%d/%m/%Y") %></p>
+<div class="movie-card">
+  <p><strong>Título:</strong> <%= @movie.title %></p>
+  <p><strong>Classificação:</strong> <%= @movie.rating %></p>
+  <p><strong>Data de Lançamento:</strong> <%= @movie.release_date.strftime("%d/%m/%Y") %></p>
+</div>
 
-<%= link_to "Voltar", movies_path %>
+<div class="card-actions">
+  <%= link_to "Editar", edit_movie_path(@movie), class: "btn-action" %>
+  <%= link_to "Voltar", movies_path, class: "btn-action" %>
+</div>
