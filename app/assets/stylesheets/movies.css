@@ -1,13 +1,171 @@
-th.sorted a,
-th.sorted a:visited,
-th.sorted a:hover,
-th.sorted a:active {
-    color: #1a5276;
-    font-weight: bold;
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #1a1a1a;
+    color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    color: #e8390e;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 500;
+    padding: 1.5rem 0 0.3rem;
+}
+
+h1 + h1 {
+    font-size: 1rem;
+    color: #aaa;
+    letter-spacing: 1px;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid #e8390e;
+    padding-bottom: 1rem;
+}
+
+table {
+    width: 90%;
+    margin: 0 auto 2rem;
+    border-collapse: collapse;
+    background: #242424;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+thead {
+    background: #2e2e2e;
+}
+
+thead th {
+    padding: 0.9rem 1rem;
+    text-align: left;
+    font-size: 0.75rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #aaa;
+    font-weight: 500;
+}
+
+thead th a {
+    color: #e8390e;
     text-decoration: none;
 }
 
+thead th a:visited {
+    color: #e8390e;
+}
+
+th.sorted {
+    border-bottom: 2px solid #e8390e;
+}
+
 th.sorted a {
-    color: #1a5276;
-    font-weight: bold;
+    color: #ff6b45;
+}
+
+th.sorted a:visited,
+th.sorted a:hover,
+th.sorted a:active {
+    color: #ff6b45;
+    text-decoration: none;
+}
+
+tbody tr {
+    border-bottom: 0.5px solid #333;
+}
+
+tbody tr:hover {
+    background: #2a2a2a;
+}
+
+tbody td {
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
+    color: #ddd;
+}
+
+tbody td a {
+    color: #e8390e;
+    text-decoration: none;
+}
+
+tbody td a:hover {
+    color: #ff6b45;
+}
+
+td.sorted {
+    background: #1f1f1f;
+}
+
+h2 {
+    color: #e8390e;
+    text-align: center;
+    margin: 2rem 0 1.5rem;
+    letter-spacing: 1px;
+}
+
+p {
+    text-align: center;
+    color: #ddd;
+    margin: 0.5rem 0;
+}
+
+a {
+    color: #e8390e;
+}
+
+a:visited {
+    color: #e8390e;
+}
+
+input[type="text"],
+input[type="date"],
+select {
+    background: #2e2e2e;
+    border: 0.5px solid #555;
+    color: #f0f0f0;
+    padding: 6px 10px;
+    border-radius: 4px;
+    margin: 4px 0 12px 8px;
+}
+
+input[type="submit"],
+button {
+    background: transparent;
+    border: 0.5px solid #555;
+    color: #aaa;
+    padding: 6px 14px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    margin-top: 0.5rem;
+}
+
+input[type="submit"]:hover,
+button:hover {
+    border-color: #e8390e;
+    color: #e8390e;
+}
+
+form {
+    width: 400px;
+    margin: 0 auto;
+    background: #242424;
+    padding: 2rem;
+    border-radius: 8px;
+}
+
+label {
+    color: #aaa;
+    font-size: 0.85rem;
+}
+
+div {
+    text-align: center;
+    margin-top: 1rem;
 }
