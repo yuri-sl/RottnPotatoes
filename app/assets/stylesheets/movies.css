@@ -1,4 +1,13 @@
-th.sorted{
-    background-color: deepskyblue;
+th.sorted a,
+th.sorted a:visited,
+th.sorted a:hover,
+th.sorted a:active {
+    color: #1a5276;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+th.sorted a {
+    color: #1a5276;
     font-weight: bold;
 }
