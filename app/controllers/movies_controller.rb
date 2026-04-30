@@ -1,5 +1,5 @@
 class MoviesController < ApplicationController
-  before_action :set_movie, only: %i[ show update destroy ]
+  before_action :set_movie, only: %i[ show edit update destroy ]
 
   # GET /movies
   def index
@@ -20,6 +20,9 @@ class MoviesController < ApplicationController
   def show
   end
 
+  def edit
+    # @movie já é setado pelo before_action
+  end
   # POST /movies
   def create
     @movie = Movie.new(movie_params)
@@ -38,9 +41,9 @@ class MoviesController < ApplicationController
   # PATCH/PUT /movies/1
   def update
     if @movie.update(movie_params)
-      render json: @movie
+      redirect_to movies_path, notice: "Filme atualizado com sucesso"
     else
-      render json: @movie.errors, status: :unprocessable_content
+      render :edit, status: :unprocessable_entity
     end
   end
 
