@@ -1,6 +1,21 @@
 <h2> Criar novo Filme </h2>
-<label> Título </label>
 
-<label> Data de lançamento </label>
+<%= form_with url: movies_path, method: :post do |f| %>
 
-<label> Classificação </label>
+  <div>
+    <%= f.label :title, "Título" %>
+    <%= f.text_field :title, name: "movie[title]" %>
+  </div>
+
+  <div>
+    <%= f.label :release_date, "Data de Lançamento" %>
+    <%= f.date_field :release_date, name: "movie[release_date]" %>
+  </div>
+
+  <div>
+    <%= f.label :rating, "Classificação" %>
+    <%= f.select :rating, ["G","PG","PG-13","R","NC-17"], {}, name: "movie[rating]" %>
+  </div>
+
+  <%= f.submit "Adicionar filme" %>
+<% end %>

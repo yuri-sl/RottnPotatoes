@@ -1,8 +1,7 @@
 <h1> Visualizar Filme </h1>
 
-<label> Título </label>
+<p><strong>Título: </strong><%= @movie.title %></p>
+<p><strong>Classificação: </strong><%= @movie.rating %></p>
+<p><strong>Data de Lançamento: </strong><%= @movie.release_date %></p>
 
-<label> Data de lançamento </label>
-
-<label> Classificação </label>
-
+<%= link_to "Voltar", movies_path %>

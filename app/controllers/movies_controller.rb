@@ -3,12 +3,17 @@ class MoviesController < ApplicationController
 
   # GET /movies
   def index
-    @movies = Movie.all
+    if params[:sort_by] == 'title'
+      @movies = Movie.order(:title)
+    elsif params[:sort_by] == 'release_date'
+      @movies = Movie.order(:release_date)
+    else
+      @movies = Movie.all
+    end
   end
 
   # GET /movies/1
   def show
-    render json: @movie
   end
 
   # POST /movies
@@ -16,9 +21,9 @@ class MoviesController < ApplicationController
     @movie = Movie.new(movie_params)
 
     if @movie.save
-      render json: @movie, status: :created, location: @movie
+      redirect_to movies_path, notice: "Filme criado com sucesso"
     else
-      render json: @movie.errors, status: :unprocessable_content
+      render "movies/create_movie", status: :unprocessable_entity
     end
   end
 
@@ -38,6 +43,7 @@ class MoviesController < ApplicationController
   # DELETE /movies/1
   def destroy
     @movie.destroy!
+    redirect_to movies_path, notice: "Filme deletado com sucesso!"
   end
 
   private

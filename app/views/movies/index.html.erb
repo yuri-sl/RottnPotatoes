@@ -1,4 +1,4 @@
-<h1> Filmes cadastrados </h1>
+<h1> Rotten Potatoes </h1>
 
 <h1> Todos os Filmes </h1>
 
@@ -6,9 +6,13 @@
 <table>
   <thead>
     <tr>
-      <th>Título</th>
+      <th class="<%= 'sorted' if params[:sort_by] == 'title' %>">
+        <%= link_to "Título", movies_path(sort_by: 'title'), id: :title_header %>
+      </th>
       <th>Classificação</th>
-      <th>Lançamento</th>
+      <th class="<%= 'sorted'  if params[:sort_by] == 'release_date' %>">
+        <%= link_to "Lançamento", movies_path(sort_by: 'release_date'), id: :release_date_header %>
+      </th>
       <th>Ações</th>
     </tr>
   </thead>
@@ -16,26 +20,21 @@
   <% @movies.each do |movie| %>
     <tr>
       <td>
-        <%= movie.title %>
+        <%=  link_to movie.title, movie_path(movie) %>
       </td>
       <td>
         <%= movie.rating %>
+      </td>
+      <td>
+        <%= movie.release_date %>
+      </td>
+      <td>
+        <%= link_to "Editar",edit_movie_path(movie) %>
+        <%= button_to "Deletar", movie_path(movie), method: :delete %>
       </td>
     </tr>
     <%end %>
   </tbody>
 </table>
 
-<% @movies.each do |movie| %>
-  <div>
-    <strong>
-      <%= movie.title %>
-      <%= movie.rating %>
-      <%= movie.release_date %>
-    </strong>
-  </div>
-  <%= link_to "Editar", edit_movie_path(movie) %>
-  <%= link_to "Deletar", movie, method: :delete %>
-<% end %>
-
-<%= link_to "Novo Filme", new_movie_path %>
+<%= link_to "Novo Filme", movies_add_path %>
