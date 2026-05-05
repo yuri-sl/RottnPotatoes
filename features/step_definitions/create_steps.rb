@@ -16,9 +16,7 @@ And /I should input data into the form fields/ do
   fill_in 'Título', with: 'The Godfather'
   select 'R', from: 'Classificação'
   fill_in 'Data de Lançamento', with: '1972-03-24'
-  # fill_in 'Descrição', with: 'An organized crime dysnasty'
 end
-
 
 And /I should press the Create Movie button/ do
   click_button 'Adicionar filme'
@@ -28,28 +26,24 @@ And /I should be redirected to index page/ do
   visit('/movies')
 end
 
-
 When /I fill in "([^"]*)" with "([^"]*)"/ do |field, value|
   fill_in field, with: value
 end
 
-# Clicar em um link pelo texto
 When /I click "([^"]*)"/ do |link|
   click_link link
 end
 
-# Verificar se está na página de criar novo filme
 Then /I should be redirected to add movie page/ do
   expect(current_path).to eq(movies_add_path)
 end
 
-# Verificar se está na home
 Then /I should be on the RottenPotatoes home page/ do
-  expect(current_path).to eq(movies_path)
+  expect(current_path).to match(/^\/$|^\/movies$/)
 end
 
-# Verificar ordem dos filmes na página
-Then /I should see "([^"]*)" before "([^"]*)"/ do |first, second|
+# DEVE VIR ANTES do "I should see" simples!
+Then /I should notice "([^"]*)" before "([^"]*)"/ do |first, second|
   content = page.body
   first_pos  = content.index(first)
   second_pos = content.index(second)
@@ -57,6 +51,10 @@ Then /I should see "([^"]*)" before "([^"]*)"/ do |first, second|
                        "Expected '#{first}' to appear before '#{second}'"
 end
 
+# Step genérico por último
+Then /I should see "([^"]*)"/ do |text|
+  expect(page).to have_content(text)
+end
 
 Given /the following movies exist:/ do |table|
   table.hashes.each do |movie|

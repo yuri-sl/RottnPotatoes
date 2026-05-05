@@ -28,7 +28,7 @@ Scenario: create a new movie
     And I press "Adicionar filme"
     Then I should be on the RottenPotatoes home page
     When I click "Título"
-    Then I should see "Apocalypse Now" before "Zorro"
+    Then I should notice "Apocalypse Now" before "Zorro"
 
 
 
@@ -38,4 +38,4 @@ Scenario: View movie list sorted alphabetically (Declarative)
     | Zorro          | PG     | 1998-07-17   |
     | Apocalypse Now | R      | 1979-08-15   |
   When I visit the movie list sorted by title
-  Then I should see "Apocalypse Now" before "Zorro"
+  Then I should notice "Apocalypse Now" before "Zorro"

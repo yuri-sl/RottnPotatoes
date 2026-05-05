@@ -41,3 +41,14 @@
 <div class="btn-action">
   <%= link_to "Novo Filme", movies_add_path %>
 </div>
+
+
+<h2>Search TMDb for a movie</h2>
+
+<%= form_with url: search_tmdb_path, method: :get do |f| %>
+  <div>
+    <%= f.label :query, "Search Terms" %>
+    <%= f.text_field :query, name: "query" %>
+  </div>
+  <%= f.submit "Search TMDb" %>
+<% end %>

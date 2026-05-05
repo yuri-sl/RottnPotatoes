@@ -1,7 +1,6 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: %i[ show edit update destroy ]
 
-  # GET /movies
   def index
     sort_by = params[:sort_by]
     sort_order = params[:sort_order] == 'desc' ? 'desc' : 'asc'
@@ -16,14 +15,12 @@ class MoviesController < ApplicationController
     @sort_order = sort_order
   end
 
-  # GET /movies/1
   def show
   end
 
   def edit
-    # @movie já é setado pelo before_action
   end
-  # POST /movies
+
   def create
     @movie = Movie.new(movie_params)
 
@@ -38,7 +35,6 @@ class MoviesController < ApplicationController
     render "movies/create_movie"
   end
 
-  # PATCH/PUT /movies/1
   def update
     if @movie.update(movie_params)
       redirect_to movies_path, notice: "Filme atualizado com sucesso"
@@ -47,20 +43,29 @@ class MoviesController < ApplicationController
     end
   end
 
-  # DELETE /movies/1
   def destroy
     @movie.destroy!
     redirect_to movies_path, notice: "Filme deletado com sucesso!"
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_movie
-      @movie = Movie.find(params.expect(:id))
-    end
+  # NOVO - action de busca no TMDb
+  def search_tmdb
+    query = params[:query]
+    results = Movie.find_in_tmdb(query)
 
-    # Only allow a list of trusted parameters through.
-    def movie_params
-      params.expect(movie: [ :title, :rating, :release_date ])
+    if results.blank?
+      flash[:alert] = "'#{query}' was not found in TMDb."
+      redirect_to root_path
     end
+  end
+
+  private
+
+  def set_movie
+    @movie = Movie.find(params.expect(:id))
+  end
+
+  def movie_params
+    params.expect(movie: [ :title, :rating, :release_date ])
+  end
 end
