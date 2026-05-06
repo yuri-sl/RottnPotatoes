@@ -42,7 +42,7 @@ Then /I should be on the RottenPotatoes home page/ do
   expect(current_path).to match(/^\/$|^\/movies$/)
 end
 
-# DEVE VIR ANTES do "I should see" simples!
+
 Then /I should notice "([^"]*)" before "([^"]*)"/ do |first, second|
   content = page.body
   first_pos  = content.index(first)
@@ -51,7 +51,7 @@ Then /I should notice "([^"]*)" before "([^"]*)"/ do |first, second|
                        "Expected '#{first}' to appear before '#{second}'"
 end
 
-# Step genérico por último
+
 Then /I should see "([^"]*)"/ do |text|
   expect(page).to have_content(text)
 end
